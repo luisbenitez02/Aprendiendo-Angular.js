@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+
+<html data-ng-app="action"><!--Agrega la frase-->
+
+<head>
+	<meta charset="UTF-8">
+	
+	<title>Colecciones de datos</title>
+	<!--Agrega el CDN-->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.7/angular.min.js"></script>
+</head>
+
+<body>
+
+	<div data-ng-controller="controlador1">
+		
+		<h1>Nombres</h1>
+		<ul>
+			<li data-ng-repeat="nombreunico in nombressimples">
+				{{ nombreunico }}
+			</li><!--Vas a repetir por cada elemento de la lista, un elemento li-->
+		</ul>
+
+
+		<h1>Heroes de Accion</h1>
+
+		<ul>
+			<li data-ng-repeat="heroeuno in heroes">
+				{{ heroeuno.nombre }}         {{heroeuno.apellido}}
+			</li>
+		</ul>
+
+	</div>
+
+<!--================================================================================================-->
+	<script>
+
+	var miapp = angular.module("action", [])//vamos a inyectar las dependencias de angular
+	//definimos un controlador.-----------------------------------------------------------------------
+	//$scope accede a todos los datos al alcance del controlador
+	miapp.controller('controlador1', ['$scope', function($scope){
+			
+			//la lista de todos los elementos
+		$scope.nombressimples = ['Dario','Penelope','Fifelito'];
+
+		$scope.heroes=[
+			{nombre:"Arnold", apellido: "Shaceneger"},
+			{nombre:"Pepito", apellido: "Perez"},
+			{nombre:"Luisito", apellido: "Luisote"}
+		];
+	}])
+//un controlador puede tener una cantidad infinita de metodos
+	</script>
+	
+</body>
+
+</html>

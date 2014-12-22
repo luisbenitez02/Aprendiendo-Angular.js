@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+
+<html data-ng-app="agenda"><!--Agrega la frase-->
+
+<head>
+	<meta charset="UTF-8">
+	
+	<title>Colecciones de datos</title>
+	<!--Agrega el CDN-->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.7/angular.min.js"></script>
+</head>
+
+<body>
+
+	<div data-ng-controller="controlador1">
+		
+		<h1>Agenda Telefonica</h1>
+		<label>Buscar</label>
+		<input type="search" data-ng-model="busqueda"><!--Campo de busqueda-->
+		<!--Le damos un nombre de modelo-->
+		<p data-ng-repeat="entrada in agenda | filter:busqueda"><!--El filtro solo mostrara los caracteres ingresados en REAL TIME-->
+			{{entrada.nombre}} {{entrada.telefono}}
+		</p><!--Accedemos al arreglo-->
+
+
+	</div>
+
+<!--================================================================================================-->
+	<script>
+
+	var miapp = angular.module("agenda", [])//vamos a inyectar las dependencias de angular
+	//definimos un controlador.-----------------------------------------------------------------------
+	//$scope accede a todos los datos al alcance del controlador
+	miapp.controller('controlador1', ['$scope', function($scope){
+			
+			$scope.agenda=[
+				{nombre:'Lincy',    telefono:'01-2250-1675'},
+                {nombre:'Alexei',   telefono:'01-9250-5345'},
+                {nombre:'Pizzeria', telefono:'800-NG-PIZZA'},
+                {nombre:'Natalia',  telefono:'01-4250-2465'},
+                {nombre:'Natalia',  telefono:'01-8650-1575'},
+                {nombre:'Karol',    telefono:'01-1240-6875'},
+                {nombre:'Ivanner',  telefono:'01-2950-3679'},
+                {nombre:'Josue',    telefono:'01-8250-4805'}
+			]
+
+	
+	}])
+//un controlador puede tener una cantidad infinita de metodos
+	</script>
+	
+</body>
+
+</html>

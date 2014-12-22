@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<!--Para que el codigo sea valido se agrega data y un guion  OJOOOOO!!!!-->
+<html data-ng-app="tienda_de_fruta"><!--Agrega la frase-->
+
+<head>
+	<meta charset="UTF-8">
+	
+	<title>Insertar Cotroladores Angular.js</title>
+	<!--Agrega el CDN-->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.7/angular.min.js"></script>
+</head>
+
+<body>
+
+	<div data-ng-controller="controlador1">
+		
+		<h1>¡Promocion de Mangos!</h1>
+		<h2>$2.15 cada uno</h2>
+
+		<label>Cantidad de Mangos</label>
+		<input type="text" data-ng-model="cantidad"><!--vamos a acceder a el desde el controlador-->
+
+		<br>
+
+		Precio Total: {{cantidad * precio | currency}}<!--Lo definimos en el controlador-->
+	
+	</div>
+
+<!--================================================================================================-->
+	<script>
+
+	var miapp = angular.module("tienda_de_fruta", [])//vamos a inyectar las dependencias de angular
+	//definimos un controlador.-----------------------------------------------------------------------
+
+	//$scope accede a todos los datos al alcance del controlador
+	miapp.controller('controlador1', ['$scope', function($scope){
+
+		$scope.cantidad=1; //con scope accedemos a toda la caja y de alli sacamos cantidad, lo modificamos
+
+		$scope.precio= 2.15;
+
+	}])
+	
+
+	</script>
+	
+</body>
+
+</html>
