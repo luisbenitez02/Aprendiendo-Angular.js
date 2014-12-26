@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html ng-app="bootstrapApp">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title></title>
+
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"><!--Responsive Web Desing-->
+
+	<!--El CSS de Bootstrap-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+	<style>
+		.btn{
+			margin-bottom: 20px;
+		}
+	</style>
+
+	<!--Instalamos angular JS-->
+	 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular.min.js" > </script>
+	 <!--Instalamos Angular route-->
+	<script src="https://code.angularjs.org/1.2.21/angular-route.min.js"></script>
+
+</head>
+
+<body ng-controller="controladorAnimales">
+<!--Angular tambien mostrara esto-->
+	<!--<nav class="navbar navbar-fixed-top navbar-inverse">
+
+		<div class="container">
+			<div class="navbar-brand">	
+				NG-ZOO
+			</div>
+		
+
+			<button class="navbar-toggle" data-target=".navHeaderCollapse" data-toogle="collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+
+			<div class="collapse navbar-collapse navHeaderCollapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active"><a href="#">Contacto</a></li>
+					<li><a href="#">Nosotros</a></li>
+					<li><a href="#">Animales</a></li>
+					<li><a href="#">Visitas</a></li>
+				</ul>
+			</div>
+		</div>
+
+	</nav>-->
+
+	<!--El menu pero desde una pantilla-->
+	<div ng-include src="'plantillas/menu.html'"></div>
+
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Bienvenido al NG-ZOO</h1>
+
+			<input type="text" class="form-control" ng-model="animalesextra"><!--nuevo modelo-->
+			<a href="" class="btn btn-warning btn-primary" ng-click="mostrarAnimales()">Agregar Animales al NG-ZOO</a>
+		</div>
+	</div>
+
+	<!--Angular mostrara esta lista-->
+
+	<div class="container">
+		<!--<ul class="list-group">
+			<li class="list-group-item">Tigre</li>
+			<li class="list-group-item">Jirafa</li>
+			<li class="list-group-item">Mono</li>
+			<li class="list-group-item">Zebra</li>
+		</ul>-->
+		<ul class="list-group">
+			<li class="list-group-item" ng-repeat="animal in animales">{{animal}}</li>
+		</ul>
+	</div>
+
+	<script src="http://code.jquery.com/jquery.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+    <script>
+    var bootstrapApp= angular.module('bootstrapApp', [])
+
+    bootstrapApp.controller("controladorAnimales",['$scope', function($scope){
+    	//vamos a almacenar los valores de animales
+    	$scope.animales = ['Tigre','Elefante','Mono','Rinoceronte']
+
+    	$scope.mostrarAnimales= function(){
+    		//.push() agrega elementos a un arrego (al final)
+    		$scope.animales.push($scope.animalesextra)
+    	}
+
+    }])
+
+    </script>
+</body>
+
+</html>	
